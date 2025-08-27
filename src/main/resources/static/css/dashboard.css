@@ -1,0 +1,334 @@
+.two-pane-layout {
+    display: flex;
+    height: calc(100vh - 150px); /* Adjust height considering header and footer */
+}
+
+.left-pane {
+    width: 20%;
+    padding-right: 10px;
+    overflow-y: hidden; /* Prevent left pane from scrolling */
+}
+
+.left-pane .card {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-height: 50px; /* adjust max height */
+    overflow-y: auto; /* add scroll if content overflows */
+    font-size: 18px; /* adjust font size */
+}
+
+.left-pane .card h3 a {
+    text-decoration: none;
+    color: inherit; /* Optional: makes link color same as text */
+}
+
+
+.left-pane .card h3 a {
+    text-decoration: none;
+    color: #b8860b; /* dark gold */
+    transition: color 0.3s ease;
+}
+
+.left-pane .card h3 a:hover {
+    color: #ffd700; /* light gold */
+}
+
+.left-pane .section {
+    margin-bottom: 0; /* adjust margin between sections/cards */
+}
+
+.right-pane {
+    width: 80%;
+    overflow-y: auto; /* Make right pane scrollable */
+    padding-left: 10px;
+}
+
+.right-pane .dashboard-links {
+    margin-bottom: 20px;
+}
+
+.right-pane .dashboard-links a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.right-pane .dashboard-links a.logout {
+  color: #dc3545;
+}
+
+.right-pane .image-container {
+    margin: 10px 0; /* Adjust margins for right alignment */
+    display: inline-block;
+}
+
+.right-pane .image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.right-pane .image-caption {
+    text-align: right; /* Caption aligns right too */
+    margin-top: 5px;
+}
+
+.card {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 0;
+    margin: 0;       /* no space outside border */
+    border: 1px solid #ddd;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.dashboard-links {
+    margin-left: auto; /* Push to extreme right */
+    text-align: right;
+}
+
+.dashboard-links a {
+    margin: 0 5px;
+    text-decoration: none;
+    /*color: #007bff;*/
+    color: #b8860b; /* Dark gold color */
+}
+
+.dashboard-links a:hover {
+    color: #ffd700; /* Lighter gold on hover */
+}
+
+.dashboard-links a.logout {
+    color: #8b0a1a;
+}
+
+.dashboard-links a.logout:hover {
+    color: #dc3545;
+}
+
+.dashboard-links i {
+    font-size: 18px;
+}
+
+.footer {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    color: #666;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.organisation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out items */
+    margin-bottom: 10px;
+}
+
+.organisation-name {
+    flex-grow: 1; /* Allow name to take space*/
+}
+
+
+.organisation-logo img {
+    max-height: 100px;
+    max-width: 100%;
+    margin-right: 10px;
+}
+
+.organisation-name h1 {
+    margin: 0;
+    font-size: 48px; /* Bigger font size */
+    /*font-family: 'Brush Script MT', 'Lucida Calligraphy', cursive;  Calligraphic style */
+    /*font-family: 'Pacifico', cursive;  Using Pacifico font */
+    font-family: 'Pacifico', cursive;
+    font-style: italic; /* Added italic style */
+    color: #b8860b; /* Dark gold color */
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contact-form h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-form button[type="submit"] {
+    background: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contact-form button[type="submit"]:hover {
+    background: #0056b3;
+}
+
+.contact-form .form-row {
+    margin-bottom: 15px;
+}
+
+.organisation-info {
+    display: flex;
+    align-items: center;
+}
+
+.social-links a {
+    margin: 0 5px;
+}
+
+.social-links a i {
+    color: #b8860b; /* Dark gold color */
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.social-links a i:hover {
+    color: #ffd700; /* Lighter gold on hover */
+}
+
+.pane-content {
+    padding-top: 10px;
+}
+
+.pane-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.pane-content ul li {
+    margin-bottom: 5px;
+}
+
+.right-pane .contact-form {
+    float: left;
+    width: 100%; /* Take full width of right pane */
+    margin: 0;
+    padding: 30px;
+    background: #f9f9f9;
+    border: 2px solid #b8860b;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center; /* Center button */
+}
+
+.contact-form h3 {
+    font-size: 24px;
+}
+
+.contact-form .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact-form .form-row label {
+    width: 30%;
+    margin-right: 10px;
+}
+
+.contact-form .form-row input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form .form-row textarea {
+    width: 100%;
+    height: 150px; /* Bigger textarea */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form .form-row:last-child {
+    display: block; /* Message field on its own */
+}
+
+.contact-form .button-container {
+    text-align: center;
+}
+
+.contact-form button[type="submit"] {
+    background: #b8860b;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+}
+
+.contact-form button[type="submit"]:hover {
+    background: #ffd700;
+}
+
+.about-us {
+    padding: 30px;
+    background: #f9f9f9;
+}
+
+.about-us h2, .about-us h3 {
+    color: #b8860b;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-member {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
