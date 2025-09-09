@@ -1,6 +1,5 @@
 package com.example.tailorshop.controller;
 
-import com.example.tailorshop.entity.User;
 import com.example.tailorshop.repository.UserRepository;
 import com.example.tailorshop.service.AuthService;
 import com.example.tailorshop.service.CustomerService;
@@ -13,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Arrays;
 
 @Controller
 public class AuthController {

@@ -1,9 +1,6 @@
 package com.example.tailorshop.service;
 
-import com.example.tailorshop.entity.Invoice;
-import com.example.tailorshop.repository.InvoiceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.example.tailorshop.model.entity.Invoice;
 
 import java.util.List;
 

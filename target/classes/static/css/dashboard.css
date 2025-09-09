@@ -39,10 +39,21 @@
     margin-bottom: 0; /* adjust margin between sections/cards */
 }
 
+/*
 .right-pane {
     width: 80%;
     overflow-y: auto; /* Make right pane scrollable */
-    padding-left: 10px;
+    /* padding-left: 10px;
+}
+*/
+
+.right-pane {
+  width: 80%;
+  flex-grow: 1; /* Make the right pane flexible */
+  overflow-y: auto;
+  padding: 20px; /* Add padding */
+  font-family: Arial, sans-serif; /* Consistent font family */
+  font-size: 14px; /* Consistent font size */
 }
 
 .right-pane .dashboard-links {
@@ -161,51 +172,6 @@
     color: #b8860b; /* Dark gold color */
 }
 
-.contact-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.contact-form h3 {
-    margin-top: 0;
-    text-align: center;
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.contact-form button[type="submit"] {
-    background: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-}
-
-.contact-form button[type="submit"]:hover {
-    background: #0056b3;
-}
-
-.contact-form .form-row {
-    margin-bottom: 15px;
-}
-
 .organisation-info {
     display: flex;
     align-items: center;
@@ -250,30 +216,49 @@
     text-align: center; /* Center button */
 }
 
+.contact-form {
+  max-width: 85%;
+  margin-left: 0; /* Set margin-left to 0 */
+  margin-right: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
 .contact-form h3 {
+    margin-top: 0;
     font-size: 24px;
+    color: #b8860b; /* Add color */
+}
+
+.contact-form h2 {
+
+    font-size: 20px;
+    color: #b8860b; /* Add color */
+    text-align: left;
 }
 
 .contact-form .form-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .contact-form .form-row label {
-    width: 30%;
-    margin-right: 10px;
+  margin-right: 5px;
+  width: 9%;
 }
 
 .contact-form .form-row input {
-    width: 70%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 35%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .contact-form .form-row textarea {
-    width: 100%;
+    width: 55%;
     height: 150px; /* Bigger textarea */
     padding: 10px;
     border: 1px solid #ccc;
@@ -331,4 +316,108 @@
     height: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px; /* Add margin to the table */
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 12px; /* Increase padding for better readability */
+  text-align: left;
+}
+
+.table th {
+  background-color: #f0f0f0;
+  font-weight: bold; /* Make table headers bold */
+}
+
+.customer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.search-form input {
+  margin-right: 10px;
+}
+
+h2.text-center {
+  text-align: center;
+  color: #b8860b; /* Dark Gold color */
+  font-size: 38px; /* Adjust font size */
+}
+
+.add-customer-btn {
+  background: #b8860b;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.add-customer-btn:hover {
+  background: #ffd700; /* Light Gold */
+}
+
+.search-form input[type="text"] {
+  width: 200px; /* Adjust width */
+  padding: 5px;
+  font-size: 15px;
+}
+
+.measurement-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%; /* Set a specific width */
+}
+
+.measurement-row label {
+  margin-right: 5px;
+}
+
+.measurement-row input[type="text"] {
+  margin-right: 20px;
+  width: 150px;
+  flex-shrink: 0; /* Prevent inputs from shrinking */
+}
+
+.remove-measurement {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.remove-measurement:hover {
+  background-color: #bd2130;
+}
+
+#measurements {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.contact-form .form-row select {
+  width: 35%; /* Adjust the width to match the input fields */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

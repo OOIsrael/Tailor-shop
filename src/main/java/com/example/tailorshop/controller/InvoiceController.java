@@ -1,15 +1,13 @@
 package com.example.tailorshop.controller;
 
 import com.example.tailorshop.service.CustomerService;
-import com.example.tailorshop.entity.Customer;
+import com.example.tailorshop.model.entity.Customer;
 import com.example.tailorshop.service.InvoiceService;
 import com.example.tailorshop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @Controller

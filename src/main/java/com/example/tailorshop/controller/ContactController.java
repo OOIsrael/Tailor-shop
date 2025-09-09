@@ -1,7 +1,6 @@
 package com.example.tailorshop.controller;
 
-import com.example.tailorshop.entity.ContactMessage;
-import com.example.tailorshop.entity.Customer;
+import com.example.tailorshop.model.entity.ContactMessage;
 import com.example.tailorshop.repository.ContactMessageRepository;
 import com.example.tailorshop.service.CustomerService;
 import com.example.tailorshop.service.InvoiceService;
@@ -12,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 public class ContactController {

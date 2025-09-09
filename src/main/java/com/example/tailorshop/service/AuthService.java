@@ -1,6 +1,6 @@
 package com.example.tailorshop.service;
 
-import com.example.tailorshop.entity.User;
+import com.example.tailorshop.model.entity.User;
 import com.example.tailorshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

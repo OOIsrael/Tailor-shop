@@ -33,8 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/css/**","/images/**","/sign-up", "/forget-password",
-                                "/about-us", "/contact", "/reset-password","/customers", "/order", "/invoices"
+                        .requestMatchers("/css/**","/images/**","/sign-up", "/forget-password","/js/**",
+                                "/about-us", "/contact", "/reset-password","/customers", "/order", "/invoices",
+                                "/customers_add"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

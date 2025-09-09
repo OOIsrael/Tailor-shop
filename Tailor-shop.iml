@@ -120,5 +120,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:6.2.10" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.angus:jakarta.mail:2.0.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.eclipse.angus:angus-activation:2.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.38" level="project" />
   </component>
 </module>

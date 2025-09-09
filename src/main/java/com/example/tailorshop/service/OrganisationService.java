@@ -1,7 +1,7 @@
 package com.example.tailorshop.service;
 
 import com.example.tailorshop.repository.OrganisationRepository;
-import com.example.tailorshop.entity.Organisation;
+import com.example.tailorshop.model.entity.Organisation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
