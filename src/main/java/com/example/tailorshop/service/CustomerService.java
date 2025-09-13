@@ -17,4 +17,7 @@ public interface CustomerService {
     Customer saveCustomer(Customer customer);
     void deleteCustomer(Long id);
     Customer saveCustomer(CustomerDTO customerDTO);
+
+    //List<Customer> searchCustomersByName(String name);
+    List<Customer> searchCustomers(String search);
 }

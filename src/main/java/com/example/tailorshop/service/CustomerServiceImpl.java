@@ -56,6 +56,19 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.save(customer);
     }
 
+    /*public List<Customer> searchCustomersByName(String name) {
+       return customerRepository.findByNameContainingIgnoreCase(name);
+    }
+
+    public List<Customer> searchCustomers(String search) {
+        return customerRepository.findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCase(search, search);
+    }*/
+
+    @Override
+    public List<Customer> searchCustomers(String search) {
+        return customerRepository.searchCustomers(search);
+    }
+
     @Override
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
