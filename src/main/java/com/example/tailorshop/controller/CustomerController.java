@@ -1,6 +1,8 @@
 package com.example.tailorshop.controller;
 
 import com.example.tailorshop.model.dto.CustomerDTO;
+import com.example.tailorshop.model.dto.MeasurementDTO;
+import com.example.tailorshop.model.entity.Measurement;
 import com.example.tailorshop.service.CustomerService;
 import com.example.tailorshop.model.entity.Customer;
 import com.example.tailorshop.service.InvoiceService;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,8 +45,40 @@ public class CustomerController {
     }
 
     @GetMapping("/customers/{id}")
-    public Customer getCustomer(@PathVariable Long id) {
-        return customerService.getCustomerById(id);
+    public String getCustomerDetails(@PathVariable Long id, Model model) {
+        Customer customer = customerService.getCustomerById(id);
+        model.addAttribute("customer", customer);
+        return "viewCustomerModal";
+    }
+
+    @GetMapping("/customers/getCustomerModal/{id}")
+    public String getCustomerModal(@PathVariable Long id, Model model) {
+        Customer customer = customerService.getCustomerById(id);
+        model.addAttribute("customer", customer);
+        return "viewCustomerModal :: #viewCustomerModal";
+    }
+
+    @GetMapping("/customers/getCustomerDetails/{id}")
+    @ResponseBody
+    public CustomerDTO getCustomerDetails(@PathVariable Long id) {
+        Customer customer = customerService.getCustomerById(id);
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setId(customer.getId());
+        customerDTO.setName(customer.getName());
+        customerDTO.setPhone(customer.getPhone());
+        customerDTO.setGender(customer.getGender());
+        customerDTO.setEmail(customer.getEmail());
+        customerDTO.setAddress(customer.getAddress());
+        List<MeasurementDTO> measurements = new ArrayList<>();
+        for (Measurement measurement : customer.getMeasurements()) {
+            MeasurementDTO measurementDTO = new MeasurementDTO();
+            measurementDTO.setId(measurement.getId());
+            measurementDTO.setType(measurement.getType());
+            measurementDTO.setValue(measurement.getValue());
+            measurements.add(measurementDTO);
+        }
+        customerDTO.setMeasurements(measurements);
+        return customerDTO;
     }
 
     @PostMapping("/customers")
@@ -67,7 +102,6 @@ public class CustomerController {
 
     @GetMapping("/customers/search")
     public ResponseEntity<String> searchCustomers(@RequestParam("search") String search) {
-        //List<Customer> customers = customerService.searchCustomersByName(search);
         List<Customer> customers = customerService.searchCustomers(search);
         StringBuilder html = new StringBuilder();
         for (Customer customer : customers) {
@@ -75,6 +109,11 @@ public class CustomerController {
             html.append("<td>").append(customer.getName()).append("</td>");
             html.append("<td>").append(customer.getEmail()).append("</td>");
             html.append("<td>").append(customer.getPhone()).append("</td>");
+            html.append("<td class='actions-icon'>");
+            html.append("<a href='javascript:void(0)' class='btn btn-sm view-customer' title='View' data-id='").append(customer.getId()).append("'><i class='fa fa-eye'></i></a>");
+            html.append("<a href='/customers/").append(customer.getId()).append("/edit' class='btn btn-sm' title='Edit'><i class='fa fa-pencil'></i></a>");
+            html.append("<a href='/customers/").append(customer.getId()).append("/delete' class='btn btn-sm' title='Delete' onclick='return confirm(\"Are you sure you want to delete this customer?\")'><i class='fa fa-trash'></i></a>");
+            html.append("</td>");
             html.append("</tr>");
         }
         return ResponseEntity.ok(html.toString());

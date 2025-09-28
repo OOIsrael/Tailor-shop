@@ -421,3 +421,17 @@ h2.text-center {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+.actions-icon {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+}
+
+.actions-icon a i {
+    color: #b8860b; /* Dark Gold */
+    transition: color 0.2s ease-in-out;
+}
+
+.actions-icon a:hover i {
+    color: #ffd700; /* Light Gold */
+}

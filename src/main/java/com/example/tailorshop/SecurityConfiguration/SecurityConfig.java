@@ -35,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/css/**","/images/**","/sign-up", "/forget-password","/js/**",
                                 "/about-us", "/contact", "/reset-password","/customers", "/order", "/invoices",
-                                "/customers_add","/customers/search","/fragments/customer-list"
+                                "/customers_add","/customers/search","/fragments/customer-list","/viewCustomerDetails",
+                                "/customers/**","/viewCustomerModal"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
