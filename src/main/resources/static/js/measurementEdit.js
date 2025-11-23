@@ -90,3 +90,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+document.getElementById('update-btn').addEventListener('click', function(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to update customer details!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('update-form').submit();
+            }
+        });
+    });

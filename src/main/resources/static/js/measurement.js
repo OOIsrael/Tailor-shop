@@ -64,3 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+document.getElementById('save-btn').addEventListener('click', function(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to save customer details!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, save it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('save-form').submit();
+            }
+        });
+    });

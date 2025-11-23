@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -125,9 +126,33 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-    @PostMapping("/customers_edit")
-    public String updateCustomer(@ModelAttribute CustomerDTO customerDTO) {
-        customerService.saveCustomer(customerDTO);
+    @PostMapping("/customers/{id}/edit")
+    public String updateCustomer(@PathVariable Long id, @ModelAttribute Customer customer, BindingResult result) {
+        System.out.println("Debug: Post Controller called");
+        if (result.hasErrors()) {
+            System.out.println("Errors: " + result.getAllErrors());
+        }
+        try {
+            Customer existingCustomer = customerService.getCustomerById(id);
+            existingCustomer.setName(customer.getName());
+            existingCustomer.setPhone(customer.getPhone());
+            existingCustomer.setGender(customer.getGender());
+            existingCustomer.setEmail(customer.getEmail());
+            existingCustomer.setAddress(customer.getAddress());
+            // Update other customer fields...
+
+            // Update measurements
+            existingCustomer.getMeasurements().clear();
+            for (Measurement measurement : customer.getMeasurements()) {
+                measurement.setCustomer(existingCustomer);
+            }
+            existingCustomer.getMeasurements().addAll(customer.getMeasurements());
+
+            customerService.saveCustomer(existingCustomer);
+        } catch (Exception e) {
+            System.out.println("Error updating customer: " + e.getMessage());
+        }
+
         return "redirect:/customers";
     }
 
@@ -148,5 +173,11 @@ public class CustomerController {
             html.append("</tr>");
         }
         return ResponseEntity.ok(html.toString());
+    }
+
+    @GetMapping("/customers/{id}/delete")
+    public String deleteCustomer(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
+        return "redirect:/customers";
     }
 }
