@@ -1,5 +1,6 @@
 package com.example.tailorshop.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,6 +20,10 @@ public class Customer {
     private String email;
     private String address;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    //private List<Measurement> measurements;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Measurement> measurements;
 }

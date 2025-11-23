@@ -7,6 +7,8 @@ import com.example.tailorshop.service.CustomerService;
 import com.example.tailorshop.model.entity.Customer;
 import com.example.tailorshop.service.InvoiceService;
 import com.example.tailorshop.service.OrderService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -94,8 +96,37 @@ public class CustomerController {
         return "customers_add";
     }
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @GetMapping("/customers/{id}/edit")
+    public String editCustomer(@PathVariable Long id, Model model) {
+        Customer customer = customerService.getCustomerById(id);
+        //model.addAttribute("measurements", customer.getMeasurements());
+        System.out.println("DEBUG: customerController customer edit called");
+        //System.out.println(customer.getMeasurements());
+        try {
+            model.addAttribute("measurementsJson", new ObjectMapper().writeValueAsString(customer.getMeasurements()));
+        } catch (JsonProcessingException e) {
+            // Handle the exception, for example:
+            model.addAttribute("error", "Error processing measurements");
+        }
+
+        model.addAttribute("customer", customer);
+        model.addAttribute("customers", customerService.getCustomers());
+        model.addAttribute("orders", orderService.getOrders());
+        model.addAttribute("invoices", invoiceService.getInvoices());
+        return "customer_edit";
+    }
+
     @PostMapping("/customers_add")
     public String saveCustomer(@ModelAttribute CustomerDTO customerDTO) {
+        customerService.saveCustomer(customerDTO);
+        return "redirect:/customers";
+    }
+
+    @PostMapping("/customers_edit")
+    public String updateCustomer(@ModelAttribute CustomerDTO customerDTO) {
         customerService.saveCustomer(customerDTO);
         return "redirect:/customers";
     }

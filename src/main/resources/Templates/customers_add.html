@@ -107,16 +107,19 @@
                     <!-- Measurement Section -->
                     <h2>Measurements</h2>
                     <div id="measurements">
-
                     </div>
-                    <div style="display: flex; justify-content: space-between;">
                         <div>
                             <button type="button" id="addMeasurement" class="add-customer-btn" style="margin-bottom: 10px;">Add Measurement</button>
                         </div>
-                    </div>
+
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <button type="button" id="back" class="add-customer-btn" style="margin-bottom: 10px;" th:onclick="|window.location.href='@{/customers}'|">Back</button>
+                        </div>
                         <div class="button-container">
                             <button type="submit" class="add-customer-btn">Save Customer</button>
                         </div>
+                    </div>
                 </form>
 
                 <script th:src="@{~/js/measurement.js}"></script>

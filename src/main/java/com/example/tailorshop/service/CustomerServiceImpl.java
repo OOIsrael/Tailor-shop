@@ -5,8 +5,10 @@ import com.example.tailorshop.model.dto.MeasurementDTO;
 import com.example.tailorshop.model.entity.Customer;
 import com.example.tailorshop.model.entity.Measurement;
 import com.example.tailorshop.repository.CustomerRepository;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +26,21 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public Customer getCustomerById(Long id) {
-        return customerRepository.findById(id).orElse(null);
+        try {
+            Customer customer = customerRepository.findByIdWithMeasurements(id).orElse(null);
+            if (customer != null) {
+                Hibernate.initialize(customer.getMeasurements());
+                System.out.println("Customer: " + customer.getName());
+                customer.getMeasurements().forEach(measurement -> System.out.println("Measurement: " + measurement.getType() + " - " + measurement.getValue()));
+            }
+            return customer;
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
